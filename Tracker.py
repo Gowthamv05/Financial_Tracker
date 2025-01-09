@@ -8,7 +8,7 @@ def display_dashboard():
     st.write("Track your income, expenses, and savings goals effectively.")
 
     st.sidebar.header("Settings")
-    currency = st.sidebar.selectbox("Select Currency", ["$", "₹", "€", "£"], index=0)
+    currency = st.sidebar.selectbox("Select Currency", ["₹", "$", "€", "£"], index=0)
 
     st.header("Income and Expenses Overview")
 
@@ -39,10 +39,11 @@ def display_dashboard():
         housing_expenses = rent + maintenance + repairs
 
     with st.expander("Utilities"):
+        groceries = st.number_input("Groceries", min_value=0.0, format="%.2f", value=0.0)
         electricity = st.number_input("Electricity", min_value=0.0, format="%.2f", value=0.0)
         water = st.number_input("Water", min_value=0.0, format="%.2f", value=0.0)
         internet = st.number_input("Internet", min_value=0.0, format="%.2f", value=0.0)
-        utilities_expenses = electricity + water + internet
+        utilities_expenses = electricity + water + internet + groceries
 
     with st.expander("Medical"):
         medical_expenses = st.number_input("Medical Expenses", min_value=0.0, format="%.2f", value=0.0)
